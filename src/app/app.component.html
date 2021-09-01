@@ -1,0 +1,22 @@
+<h1>{{title}}</h1>
+<br>
+
+<div *ngFor="let quizques of quiz | async" >
+  <p>
+    <button (click)="quizques.isCollapsed = !quizques.isCollapsed" 
+    style="margin-left: 20px; margin-top: 18px" 
+    type="button" 
+    class="btn btn-outline-primary" 
+    [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseExample">
+      {{quizques.quesno + ". " + quizques.ques}}
+    </button>
+  </p>
+  <div [ngbCollapse]="!quizques.isCollapsed">
+    <div class="card">
+      <div class="card-body">
+        {{quizques.ans}}
+      </div>
+    </div>
+  </div>
+</div>
